@@ -13,41 +13,81 @@ function Projects() {
   return (
     <div className="page">
       <div className="container">
-        <h1 className="title">My Projects</h1>
-        <p className="subtitle">
-          Here are some projects I built while learning front-end development.
-        </p>
+        <section className="section" style={{ marginTop: 0 }}>
+          <h1 className="section-title">Featured Projects</h1>
+          <p className="section-subtitle">
+            A selection of front-end projects where I practice UI building, React logic,
+            responsive layouts, and clean component structure.
+          </p>
 
-        <div className="buttons">
-          <button className="button" onClick={() => setFilter("All")}>All</button>
-          <button className="button" onClick={() => setFilter("React")}>React</button>
-          <button className="button" onClick={() => setFilter("JavaScript")}>JavaScript</button>
-        </div>
-
-        <div className="grid">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="card project-card"
-              onClick={() => setSelectedProject(project)}
+          <div className="project-toolbar">
+            <button
+              className={`filter-btn ${filter === "All" ? "active" : ""}`}
+              onClick={() => setFilter("All")}
             >
-              <h2>{project.title}</h2>
-              <p className="hero-small">{project.category}</p>
-              <p className="subtitle">{project.description}</p>
-            </div>
-          ))}
-        </div>
+              All
+            </button>
+            <button
+              className={`filter-btn ${filter === "React" ? "active" : ""}`}
+              onClick={() => setFilter("React")}
+            >
+              React
+            </button>
+            <button
+              className={`filter-btn ${filter === "JavaScript" ? "active" : ""}`}
+              onClick={() => setFilter("JavaScript")}
+            >
+              JavaScript
+            </button>
+          </div>
+
+          <div className="projects-grid">
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="project-card"
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="project-image"></div>
+
+                <div className="project-content">
+                  <p className="project-category">{project.category}</p>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-text">{project.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {selectedProject && (
           <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
+              <p className="project-category">{selectedProject.category}</p>
               <h2>{selectedProject.title}</h2>
-              <p className="hero-small">{selectedProject.category}</p>
-              <p className="subtitle">{selectedProject.description}</p>
+              <p>{selectedProject.description}</p>
 
-              <button className="button" onClick={() => setSelectedProject(null)}>
-                Close
-              </button>
+              <div className="modal-links">
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button"
+                >
+                  GitHub
+                </a>
+                <a
+                  href={selectedProject.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-outline"
+                >
+                  Live Demo
+                </a>
+                <button className="button-outline" onClick={() => setSelectedProject(null)}>
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         )}
