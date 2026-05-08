@@ -48,7 +48,11 @@ function Projects() {
                 className="project-card"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="project-image"></div>
+                <img
+                  src={project.image}
+                  className="project-image"
+                  alt={project.title}
+                />
 
                 <div className="project-content">
                   <p className="project-category">{project.category}</p>
