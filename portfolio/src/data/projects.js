@@ -7,7 +7,7 @@ export const projects = [
       "A premium-style ecommerce website built with React, React Router, reusable components, modal project cards, and responsive design.",
     image: "/images/ecommerce.png",
     github: "https://github.com/elhoudaiguiayoub/ehyoustreetwear",
-    demo: "https://ehyoureetwear.vercel.app/",
+    demo: "https://ehyoustreetwear.vercel.app/",
   },
 
   {
