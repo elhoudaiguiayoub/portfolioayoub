@@ -1,0 +1,46 @@
+{% extends 'authentification/base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+    <div>
+        <span class="eyebrow mb-2">Catalogue</span>
+        <h1 class="fw-black display-6 mb-1">Activités disponibles</h1>
+        <p class="text-muted mb-0">Choisis une activité et inscris-toi depuis ton espace élève.</p>
+    </div>
+    {% if is_demo_authenticated and demo_role == 'professeur' or False %}
+        <a href="{% url 'ajouter_activite' %}" class="btn btn-primary px-4">Ajouter une activité</a>
+    {% endif %}
+</div>
+
+<div class="row g-4">
+    {% for activite in activites %}
+    <div class="col-md-6 col-xl-4">
+        <article class="card h-100">
+            <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start gap-2 mb-3">
+                    <span class="activity-date">{{ activite.date|date:"d M Y • H:i" }}</span>
+                    <span class="badge-soft">{{ activite.nombre_max_participants }} places</span>
+                </div>
+                <h2 class="card-title h4">{{ activite.nom }}</h2>
+                <p class="card-text text-muted flex-grow-1">{{ activite.description|truncatewords:28 }}</p>
+                {% if activite.professeur %}
+                    <small class="text-muted mb-3">Responsable : {{ activite.professeur.username }}</small>
+                {% endif %}
+                {% if is_demo_authenticated %}
+                    <a href="{% url 'inscription_activite' activite.id %}" class="btn btn-primary w-100 mt-auto">S'inscrire</a>
+                {% else %}
+                    <a href="{% url 'connexion' %}" class="btn btn-outline-primary w-100 mt-auto">Se connecter pour s'inscrire</a>
+                {% endif %}
+            </div>
+        </article>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="empty-state">
+            <h2 class="h4 fw-bold">Aucune activité pour le moment</h2>
+            <p class="text-muted mb-0">Ajoute des données avec la commande <code>python manage.py seed_data</code> pour une démo portfolio.</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

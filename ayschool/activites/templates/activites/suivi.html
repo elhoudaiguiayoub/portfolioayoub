@@ -1,0 +1,33 @@
+{% extends 'authentification/base.html' %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+    <div>
+        <span class="eyebrow mb-2">Tableau de bord</span>
+        <h1 class="display-6 fw-bold mb-1">Mon suivi</h1>
+        <p class="text-muted mb-0">Retrouve toutes tes inscriptions aux activités parascolaires.</p>
+    </div>
+    <a href="{% url 'liste_activites' %}" class="btn btn-outline-primary">Ajouter une activité</a>
+</div>
+
+<div class="premium-card p-3 p-md-4">
+    {% for inscription in inscriptions %}
+        <div class="d-flex flex-column flex-md-row justify-content-between gap-2 py-3 {% if not forloop.last %}border-bottom{% endif %}">
+            <div>
+                <h2 class="h5 fw-bold mb-1">{{ inscription.activite.nom }}</h2>
+                <p class="text-muted mb-0">{{ inscription.activite.description|truncatewords:20 }}</p>
+            </div>
+            <div class="text-md-end">
+                <span class="activity-date">{{ inscription.activite.date|date:"d M Y • H:i" }}</span>
+                <div><small class="text-muted">Inscrit le {{ inscription.date_inscription|date:"d M Y" }}</small></div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="empty-state">
+            <h2 class="h4 fw-bold">Aucune inscription</h2>
+            <p class="text-muted">Va dans la liste des activités pour t'inscrire à ta première activité.</p>
+            <a href="{% url 'liste_activites' %}" class="btn btn-primary">Voir les activités</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

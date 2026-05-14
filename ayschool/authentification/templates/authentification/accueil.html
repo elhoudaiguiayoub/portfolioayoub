@@ -1,0 +1,41 @@
+{% extends 'authentification/base.html' %}
+
+{% block content %}
+<section class="hero mb-5">
+    <span class="eyebrow mb-3">Plateforme scolaire moderne</span>
+    <h1 class="hero-title mb-4">Organiser, suivre et gérer les activités parascolaires.</h1>
+    <p class="hero-text mb-4">AySchool aide les élèves à découvrir des activités, les professeurs à les publier, et l'administration à garder une vision claire des inscriptions.</p>
+    <div class="d-flex flex-wrap gap-3">
+        <a class="btn btn-primary btn-lg px-4" href="{% url 'liste_activites' %}">Voir les activités</a>
+        {% if not is_demo_authenticated %}
+            <a class="btn btn-outline-primary btn-lg px-4" href="{% url 'inscription' %}">Créer un compte</a>
+        {% else %}
+            <a class="btn btn-outline-primary btn-lg px-4" href="{% url 'suivi' %}">Voir mon suivi</a>
+        {% endif %}
+    </div>
+</section>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="stat-card p-4 h-100">
+            <div class="badge-soft mb-3">Élèves</div>
+            <h3 class="h5 fw-bold">Inscription rapide</h3>
+            <p class="text-muted mb-0">Les élèves consultent les activités disponibles et confirment leur participation en quelques clics.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card p-4 h-100">
+            <div class="badge-soft mb-3">Professeurs</div>
+            <h3 class="h5 fw-bold">Gestion des activités</h3>
+            <p class="text-muted mb-0">Les professeurs peuvent créer des activités avec une date, une description et une capacité maximale.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card p-4 h-100">
+            <div class="badge-soft mb-3">Portfolio</div>
+            <h3 class="h5 fw-bold">Projet full-stack</h3>
+            <p class="text-muted mb-0">Django, templates, formulaires, sessions signées, UI responsive et déploiement Vercel.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
