@@ -20,19 +20,7 @@ export const projects = [
     github: "https://github.com/elhoudaiguiayoub/weather-app.git",
     demo: "https://weather-app-bay-five-77.vercel.app/",
   },
-
-  {
-    id: 3,
-    title: "Developer Portfolio",
-    category: "React",
-    description:
-      "A premium-style portfolio website built with React, React Router, reusable components, modal project cards, and responsive design.",
-    image: "/images/portfolio.png",
-    github: "https://github.com/elhoudaiguiayoub/portfolioayoub",
-    demo: "https://portfolioayoub-keis-ebon.vercel.app/",
-  },
-
-  {
+{
     id: 4,
     title: "Task Manager",
     category: "React",
@@ -41,5 +29,25 @@ export const projects = [
     image: "/images/todo.png",
     github: "https://github.com/elhoudaiguiayoub/todoapp",
     demo: "https://todoapp-ruby-chi.vercel.app/",
+  },
+  {
+  id: 5,
+  title: "AySchool Platform",
+  category: "Django",
+  description:
+    "A full-stack school activity management platform built with Django featuring authentication, activity registration, role-based access, and responsive UI.",
+  image: "/images/ayschool.png",
+  github: "https://github.com/elhoudaiguiayoub/ayschool",
+  demo: "https://ayschool-4gme.vercel.app/",
+},
+  {
+    id: 6,
+    title: "Developer Portfolio",
+    category: "React",
+    description:
+      "A premium-style portfolio website built with React, React Router, reusable components, modal project cards, and responsive design.",
+    image: "/images/portfolio.png",
+    github: "https://github.com/elhoudaiguiayoub/portfolioayoub",
+    demo: "https://portfolioayoub-keis-ebon.vercel.app/",
   }
 ];
