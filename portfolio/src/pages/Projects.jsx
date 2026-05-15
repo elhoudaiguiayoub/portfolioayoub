@@ -39,6 +39,13 @@ function Projects() {
             >
               JavaScript
             </button>
+            <button
+              className={`filter-btn ${filter === "Django" ? "active" : ""}`}
+              onClick={() => setFilter("Django")}
+            >
+              Django
+            </button>
+
           </div>
 
           <div className="projects-grid">
