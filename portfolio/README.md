@@ -1,16 +1,20 @@
-# React + Vite
+# Portfolio d’Ayoub El Houdaigui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site bilingue réalisé avec React, React Router et Vite. Les quatre pages donnent accès aux projets, au parcours, aux CV et au contact.
 
-Currently, two official plugins are available:
+## Développement local
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Depuis ce dossier, avec Node.js 22.12 ou une version ultérieure compatible avec Vite 8, exécutez les commandes suivantes.
 
-## React Compiler
+```sh
+npm ci
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+`npm run lint` vérifie le code. `npm run build` génère le site dans `dist/`. `npm run preview` permet de vérifier cette version localement.
 
-## Expanding the ESLint configuration
+## Contenu
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Les études de cas et les liens vers les démonstrations se trouvent dans [src/data/projects.js](src/data/projects.js).
+- Les [CV français et anglais](public/cv/) sont téléchargeables depuis l’accueil, le parcours et le contact.
+- Les liens `/?lang=fr` et `/?lang=en` ouvrent directement la langue voulue. Le sélecteur permet de mémoriser sa préférence.
